@@ -1,0 +1,81 @@
+package pkgErr
+
+// Code denotes the code number.
+type Code string
+
+// The following constants are the known code.
+const (
+	SUCCESS_CODE         Code = "00"
+	UNDEFINED_ERROR_CODE Code = "100"
+
+	AUTH_INVALID_REQUEST_PAYLOAD_CODE         Code = "110"
+	AUTH_INVALID_EMAIL_FORMAT_CODE            Code = "111"
+	AUTH_INVALID_PIN_FORMAT_CODE              Code = "112"
+	AUTH_INVALID_PHONE_NUMBER_FORMAT_CODE     Code = "113"
+	AUTH_INVALID_DATE_FORMAT_CODE             Code = "114"
+	AUHT_EMAIL_ALREADY_REGISTERED_CODE        Code = "115"
+	AUTH_PHONE_NUMBER_ALREADY_REGISTERED_CODE Code = "116"
+	AUTH_USER_NOT_FOUND_CODE                  Code = "117"
+	AUTH_INVALID_OTP_CODE                     Code = "118"
+	//UNDEFINED_ERROR_CODE                      Code = "119"
+	AUTH_UNAUTHORIZED_CODE       Code = "121"
+	AUTH_UNVERIFIED_CODE         Code = "122"
+	AUTH_BIOMETRC_INACTIVE_CODE  Code = "123"
+	AUTH_ALREADY_VERIFIED_CODE   Code = "124"
+	AUTH_RECORD_NOT_FOUND_CODE   Code = "125"
+	AUTH_EXPIRED_TIME_CODE       Code = "126"
+	AUTH_INVALID_ACCESS_CODE     Code = "127"
+	AUTH_INVALID_SIGNATURE_CODE  Code = "128"
+	AUTH_DEFERENCE_DEVICE_CODE   Code = "129"
+	INVALID_REQUEST_PAYLOAD_CODE Code = "133"
+	INTERNAL_SERVER_ERROR_CODE   Code = "500"
+
+	OUTBOUND_RECORD_NOT_FOUND_CODE Code = "130"
+	OUTBOUND_UNDIFINED_CODE        Code = "131"
+	OUTBOUND_INVALID_PAYLOAD       Code = "132"
+
+	PROFILE_INVALID_PAYLOAD_CODE                 Code = "140"
+	PROFILE_USER_NOT_FOUND_CODE                  Code = "141"
+	PROFILE_INVALID_ACCESS_CODE                  Code = "142"
+	PROFILE_DEFERENCE_DEVICE_CODE                Code = "143"
+	PROFILE_INVAKID_PIN_CODE                     Code = "144"
+	PROFILE_EMAIL_ALREADY_REGISTERED_CODE        Code = "145"
+	PROFILE_PHONE_NUMBER_ALREADY_REGISTERED_CODE Code = "146"
+	PROFILE_INVALID_OTP_CODE                     Code = "147"
+	PROFILE_IS_EXISTING_PIN                      Code = "148"
+	PROFILE_EXPIRED_ACCESS_CODE                  Code = "149"
+	PROFILE_RECORD_NOT_FOUND_CODE                Code = "150"
+
+	BIOMETRIC_INVALID_REQUEST_CODE Code = "161"
+
+	ARTICLE_RECORD_NOT_FOUND_CODE Code = "170"
+	ARTICLE_DEFERENCE_DEVICE_CODE Code = "171"
+	ARTICLE_USER_NOT_FOUNDCODE    Code = "172"
+)
+const (
+	SUCCES_MSG                           = "success"
+	SERVER_BUSY                          = "server is busy"
+	USER_NOT_FOUND_MSG                   = "user not found"
+	INVALID_REQUEST_PAYLOAD_MSG          = "invalid request payload"
+	INVALID_ACCESS_KEY_MSG               = "invalid access key"
+	INVALID_EMAIL_FORMAT_MSG             = "invalid email format"
+	INVALID_PIN_FORMAT_MSG               = "invalid pin format"
+	INVALID_PHONE_NUMBER_FORMAT_MSG      = "invalid phone number format"
+	INVALID_DATE_FORMAT_MSG              = "invalid date format"
+	EMAIL_ALREADY_REGISTERED_MSG         = "email already registered"
+	PHONE_NUBMBER_ALREADY_REGISTERED_MSG = "phone number already registered"
+	WRONG_EMAIL_OR_PIN_MSG               = "wrong email or pin"
+	WRONG_PHONE_NUMBER_OR_PIN_MSG        = "wrong phone number or pin"
+	INVALID_OTP_MSG                      = "invalid otp code"
+	UNAUTHORIZED_MSG                     = "unauthorized"
+	UNVERIFIED_MSG                       = "unverified"
+	RECORD_NOT_FOUND_MSG                 = "record not found"
+	BIOMETRIC_INACTIVE_MSG               = "biometric inactive"
+	ALREADY_VERIFIED_MSG                 = "already verified"
+	EXPIRED_TIME_MSG                     = "expired"
+	INVALID_SIGNATURE_MSG                = "invalid signature"
+	DEFERENCE_DEVICE_MSG                 = "deference device"
+	INVALID_PIN                          = "invalid pin"
+	IS_EXISTING_PIN                      = "is existing pin, no update"
+	INTERNAL_SERVER_MSG                  = "somtehing wen't wrong!"
+)

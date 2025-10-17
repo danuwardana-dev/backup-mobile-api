@@ -1,0 +1,3007 @@
+basePath: /
+definitions:
+  backend-mobile-api_internal_middleware.TokenData:
+    properties:
+      access_token:
+        type: string
+      expired_access:
+        type: string
+      expired_refresh:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+  backend-mobile-api_model_dto.BaseResponse:
+    properties:
+      data: {}
+      error:
+        type: string
+      message:
+        type: string
+      status_code:
+        $ref: '#/definitions/backend-mobile-api_model_enum_pkgErr.Code'
+    type: object
+  backend-mobile-api_model_dto_request.AccessTokenRequest:
+    properties:
+      access_type:
+        allOf:
+        - $ref: '#/definitions/backend-mobile-api_model_enum.AccessTokenType'
+        enum:
+        - SET_PIN
+        - RESET_PIN
+        - RESET_EMAIL
+        - RESET_PHONE_NUMBER
+        - DELETE_ACCOUNT
+      device_id:
+        type: string
+      pin:
+        type: string
+    required:
+    - access_type
+    - device_id
+    - pin
+    type: object
+  backend-mobile-api_model_dto_request.Article:
+    properties:
+      active_after_day:
+        type: string
+      category:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      url:
+        type: string
+    required:
+    - id
+    type: object
+  backend-mobile-api_model_dto_request.ArticleByList:
+    properties:
+      active_after_day:
+        type: string
+      category:
+        type: string
+      limit:
+        type: integer
+      offset:
+        type: integer
+    type: object
+  backend-mobile-api_model_dto_request.BiometrictStatusRequest:
+    properties:
+      active:
+        type: boolean
+      device_id:
+        type: string
+    required:
+    - device_id
+    type: object
+  backend-mobile-api_model_dto_request.DeleteArticleRequest:
+    properties:
+      article:
+        $ref: '#/definitions/backend-mobile-api_model_dto_request.Article'
+      device_id:
+        type: string
+    required:
+    - article
+    - device_id
+    type: object
+  backend-mobile-api_model_dto_request.DeletetAccountRequest:
+    properties:
+      account_token:
+        type: string
+      device_id:
+        type: string
+    required:
+    - account_token
+    - device_id
+    type: object
+  backend-mobile-api_model_dto_request.DetailCurrentAddress:
+    properties:
+      city:
+        type: string
+      country:
+        type: string
+      district:
+        type: string
+      full_address:
+        type: string
+    type: object
+  backend-mobile-api_model_dto_request.DeviceData:
+    properties:
+      app_version_code:
+        type: string
+      app_version_name:
+        type: string
+      brand:
+        type: string
+      manufacturer:
+        type: string
+      model:
+        type: string
+      product:
+        type: string
+      version_release:
+        type: string
+      version_sdk:
+        type: string
+    required:
+    - app_version_code
+    - app_version_name
+    - brand
+    - manufacturer
+    - model
+    - product
+    - version_release
+    - version_sdk
+    type: object
+  backend-mobile-api_model_dto_request.ForgotPinRequest:
+    properties:
+      callback_url:
+        type: string
+      device_id:
+        type: string
+      device_info:
+        $ref: '#/definitions/backend-mobile-api_model_dto_request.DeviceData'
+      email:
+        type: string
+    required:
+    - callback_url
+    - device_id
+    - device_info
+    - email
+    type: object
+  backend-mobile-api_model_dto_request.KTPrequest:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      current_address:
+        $ref: '#/definitions/backend-mobile-api_model_dto_request.DetailCurrentAddress'
+      date_of_birth:
+        type: string
+      district:
+        type: string
+      full_name:
+        type: string
+      gender:
+        type: string
+      image:
+        type: string
+      martial_status:
+        type: string
+      nationality:
+        type: string
+      nik:
+        type: string
+      occupation:
+        type: string
+      place_of_birth:
+        type: string
+      religion:
+        type: string
+      state:
+        type: string
+    type: object
+  backend-mobile-api_model_dto_request.KycRequest:
+    properties:
+      image:
+        type: string
+    type: object
+  backend-mobile-api_model_dto_request.LoginEmailRequest:
+    properties:
+      device_id:
+        type: string
+      email:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+      pin:
+        type: string
+      place:
+        type: string
+      type:
+        allOf:
+        - $ref: '#/definitions/backend-mobile-api_model_enum.LoginType'
+        enum:
+        - EMAIL
+        - PHONE_NUMBER
+        - BIOMETRIC
+        example: EMAIL
+    required:
+    - device_id
+    - email
+    - latitude
+    - longitude
+    - pin
+    - place
+    - type
+    type: object
+  backend-mobile-api_model_dto_request.LoginPhoneNumberRequest:
+    properties:
+      device_id:
+        type: string
+      latitude:
+        type: string
+      longitude:
+        type: string
+      phone_number:
+        type: string
+      pin:
+        type: string
+      place:
+        type: string
+      type:
+        allOf:
+        - $ref: '#/definitions/backend-mobile-api_model_enum.LoginType'
+        enum:
+        - EMAIL
+        - PHONE_NUMBER
+        example: PHONE_NUMBER
+    required:
+    - device_id
+    - latitude
+    - longitude
+    - phone_number
+    - pin
+    - place
+    - type
+    type: object
+  backend-mobile-api_model_dto_request.LogoutRequest:
+    properties:
+      device_id:
+        type: string
+      refresh_token:
+        type: string
+    required:
+    - device_id
+    - refresh_token
+    type: object
+  backend-mobile-api_model_dto_request.NewArticle:
+    properties:
+      active_after_day:
+        type: string
+      category:
+        type: string
+      name:
+        type: string
+      url:
+        type: string
+    required:
+    - name
+    - url
+    type: object
+  backend-mobile-api_model_dto_request.NewArticleRequest:
+    properties:
+      device_id:
+        type: string
+      new_article:
+        $ref: '#/definitions/backend-mobile-api_model_dto_request.NewArticle'
+    required:
+    - device_id
+    - new_article
+    type: object
+  backend-mobile-api_model_dto_request.PassportRequest:
+    properties:
+      current_address:
+        $ref: '#/definitions/backend-mobile-api_model_dto_request.DetailCurrentAddress'
+      date_of_birth:
+        type: string
+      date_of_expired:
+        type: string
+      date_of_issue:
+        type: string
+      full_name:
+        type: string
+      gender:
+        type: string
+      image:
+        type: string
+      nationality:
+        type: string
+      passport_no:
+        type: string
+      passport_type:
+        type: string
+      place_of_birth:
+        type: string
+      place_of_issue:
+        type: string
+      resi_number:
+        type: string
+    type: object
+  backend-mobile-api_model_dto_request.RefreshTokenRequest:
+    properties:
+      device_id:
+        type: string
+      refresh_token:
+        type: string
+      uuid:
+        type: string
+    required:
+    - device_id
+    - refresh_token
+    - uuid
+    type: object
+  backend-mobile-api_model_dto_request.RegisterRequest:
+    properties:
+      email:
+        type: string
+      full_name:
+        type: string
+      phone_number:
+        type: string
+    required:
+    - email
+    - full_name
+    - phone_number
+    type: object
+  backend-mobile-api_model_dto_request.ResetEmailRequest:
+    properties:
+      account_token:
+        type: string
+      device_id:
+        type: string
+      email:
+        type: string
+    required:
+    - account_token
+    - device_id
+    - email
+    type: object
+  backend-mobile-api_model_dto_request.ResetFullNameRequest:
+    properties:
+      device_id:
+        type: string
+      full_name:
+        type: string
+    required:
+    - device_id
+    - full_name
+    type: object
+  backend-mobile-api_model_dto_request.ResetPhoneNumberRequest:
+    properties:
+      account_token:
+        type: string
+      device_id:
+        type: string
+      phone_number:
+        type: string
+    required:
+    - account_token
+    - device_id
+    - phone_number
+    type: object
+  backend-mobile-api_model_dto_request.ResetPinRequest:
+    properties:
+      account_token:
+        type: string
+      confirmed_pin:
+        type: string
+      device_id:
+        type: string
+      pin:
+        type: string
+    required:
+    - account_token
+    - confirmed_pin
+    - device_id
+    - pin
+    type: object
+  backend-mobile-api_model_dto_request.SelectListArticleRequest:
+    properties:
+      article:
+        $ref: '#/definitions/backend-mobile-api_model_dto_request.ArticleByList'
+      device_id:
+        type: string
+    required:
+    - article
+    - device_id
+    type: object
+  backend-mobile-api_model_dto_request.SendOtpRequest:
+    properties:
+      device_id:
+        type: string
+      otp_method:
+        allOf:
+        - $ref: '#/definitions/backend-mobile-api_model_enum.OtpType'
+        enum:
+        - EMAIL
+        - SMS
+        - WHATSAPP
+      service_type:
+        allOf:
+        - $ref: '#/definitions/backend-mobile-api_model_enum.OtpService'
+        enum:
+        - OTP_VERIFY_ACCOUNT
+        - OTP_RESET_PIN
+        - OTP_FORGOT_PIN
+      verify_to:
+        type: string
+    required:
+    - device_id
+    - otp_method
+    - service_type
+    - verify_to
+    type: object
+  backend-mobile-api_model_dto_request.SetPinRequest:
+    properties:
+      account_token:
+        type: string
+      confirmed_pin:
+        type: string
+      device_id:
+        type: string
+      email_or_phone_number:
+        type: string
+      pin:
+        type: string
+    required:
+    - account_token
+    - confirmed_pin
+    - device_id
+    - email_or_phone_number
+    - pin
+    type: object
+  backend-mobile-api_model_dto_request.UpdateArticleRequest:
+    properties:
+      article:
+        $ref: '#/definitions/backend-mobile-api_model_dto_request.Article'
+      device_id:
+        type: string
+    required:
+    - article
+    - device_id
+    type: object
+  backend-mobile-api_model_dto_request.VerifyOtpRequest:
+    properties:
+      device_id:
+        type: string
+      device_info:
+        $ref: '#/definitions/backend-mobile-api_model_dto_request.DeviceData'
+      otp:
+        type: string
+      verify_id:
+        type: string
+    required:
+    - device_id
+    - device_info
+    - otp
+    - verify_id
+    type: object
+  backend-mobile-api_model_dto_response.AccessTokenResponse:
+    properties:
+      access_key:
+        type: string
+      expire_at:
+        type: string
+    type: object
+  backend-mobile-api_model_dto_response.ArticleResponse:
+    properties:
+      active_after_day:
+        type: string
+      category:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+      url:
+        type: string
+    type: object
+  backend-mobile-api_model_dto_response.SelectArticleResponse:
+    properties:
+      articles:
+        items:
+          $ref: '#/definitions/backend-mobile-api_model_dto_response.ArticleResponse'
+        type: array
+      limit:
+        type: integer
+      offset:
+        type: integer
+      total:
+        type: integer
+    type: object
+  backend-mobile-api_model_dto_response.SendOtpResponse:
+    properties:
+      expire_at:
+        type: string
+      verify_id:
+        type: string
+    type: object
+  backend-mobile-api_model_dto_response.UserProfileInquiryResponse:
+    properties:
+      biometric_status:
+        $ref: '#/definitions/backend-mobile-api_model_enum.BiometricStatus'
+      email:
+        type: string
+      fullname:
+        type: string
+      phone_number:
+        type: string
+      status:
+        $ref: '#/definitions/backend-mobile-api_model_enum.UserDetailStatus'
+    type: object
+  backend-mobile-api_model_dto_response.VerifyOtp:
+    properties:
+      access_key:
+        type: string
+      expire_at:
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.BasicSuccess:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: success
+        type: string
+      status_code:
+        example: "00"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.CommonError:
+    properties:
+      data: {}
+      error:
+        example: time out
+        type: string
+      message:
+        example: server is busy
+        type: string
+      status_code:
+        example: "119"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.DeferenceDevice:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: deference device
+        type: string
+      status_code:
+        example: "129"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.DeferenceDeviceArtice:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: deference device
+        type: string
+      status_code:
+        example: "171"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: deference device
+        type: string
+      status_code:
+        example: "143"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.ExistingPinFailureResponse:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: ' is existing pin, no update'
+        type: string
+      status_code:
+        example: "148"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.ExpiredAccessFailureResponse:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: expired
+        type: string
+      status_code:
+        example: "149"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.InquiryProfileResponse:
+    properties:
+      data:
+        $ref: '#/definitions/backend-mobile-api_model_dto_response.UserProfileInquiryResponse'
+      error:
+        example: ""
+        type: string
+      message:
+        example: success
+        type: string
+      status_code:
+        example: "00"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.InvalidAccessCode:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: invalid access key
+        type: string
+      status_code:
+        example: "127"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.LoginSuccess:
+    properties:
+      data:
+        properties:
+          token:
+            $ref: '#/definitions/backend-mobile-api_internal_middleware.TokenData'
+          user:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserData'
+        type: object
+      error:
+        example: ""
+        type: string
+      message:
+        example: success
+        type: string
+      status_code:
+        example: "00"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.ProfileAccessInvalidFailureResponse:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: invalid access key
+        type: string
+      status_code:
+        example: "142"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.ProfileAccessTokenResponse:
+    properties:
+      data:
+        $ref: '#/definitions/backend-mobile-api_model_dto_response.AccessTokenResponse'
+      error:
+        example: ""
+        type: string
+      message:
+        example: success
+        type: string
+      status_code:
+        example: "00"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.ProfileEmailAlreadyRegistered:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: email already registered
+        type: string
+      status_code:
+        example: "145"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.ProfileInvalidPayloadResponse:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: invalid request payload
+        type: string
+      status_code:
+        example: "140"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.ProfilePhoneNumberAlreadyRegistered:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: phone number already registered
+        type: string
+      status_code:
+        example: "146"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.ProfileUnauthorized:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: invalid pin
+        type: string
+      status_code:
+        example: "121"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.RecordNotFoundArticles:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: record not found
+        type: string
+      status_code:
+        example: "160"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.RefreshTokenInvalidPayload:
+    properties:
+      data: {}
+      error:
+        example: refresh_token is required
+        type: string
+      message:
+        example: invalid request payload
+        type: string
+      status_code:
+        example: "110"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed:
+    properties:
+      data: {}
+      error:
+        example: deference confirmed pin
+        type: string
+      message:
+        example: invalid request payload
+        type: string
+      status_code:
+        example: "110"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.SendOtpSuccess:
+    properties:
+      data:
+        $ref: '#/definitions/backend-mobile-api_model_dto_response.SendOtpResponse'
+      error:
+        example: ""
+        type: string
+      message:
+        example: success
+        type: string
+      status_code:
+        example: "00"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.SetPinMisMatch:
+    properties:
+      data: {}
+      error:
+        example: deference confirmed pin
+        type: string
+      message:
+        example: invalid request payload
+        type: string
+      status_code:
+        example: "110"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.SuccesVerifyOtpSuccess:
+    properties:
+      data:
+        $ref: '#/definitions/backend-mobile-api_model_dto_response.VerifyOtp'
+      error:
+        example: ""
+        type: string
+      message:
+        example: success
+        type: string
+      status_code:
+        example: "00"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.SuccessListArticles:
+    properties:
+      data:
+        $ref: '#/definitions/backend-mobile-api_model_dto_response.SelectArticleResponse'
+      error:
+        example: ""
+        type: string
+      message:
+        example: success
+        type: string
+      status_code:
+        example: "00"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.Unauthorized:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: unauthorized
+        type: string
+      status_code:
+        example: "121"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.UnverifiedUser:
+    properties:
+      data: {}
+      error:
+        type: string
+      message:
+        example: unverified
+        type: string
+      status_code:
+        example: "122"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.UserData:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+      uuid:
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.UserNotFound:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: user not found
+        type: string
+      status_code:
+        example: "117"
+        type: string
+    type: object
+  backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse:
+    properties:
+      data: {}
+      error:
+        example: ""
+        type: string
+      message:
+        example: user not found
+        type: string
+      status_code:
+        example: "141"
+        type: string
+    type: object
+  backend-mobile-api_model_enum.AccessTokenType:
+    enum:
+    - SET_PIN
+    - FORGOT_PIN
+    - RESET_PIN
+    - RESET_EMAIL
+    - RESET_PHONE_NUMBER
+    - DELETE_ACCOUNT
+    type: string
+    x-enum-varnames:
+    - ACCESS_SET_PIN
+    - ACCESS_FORGOT_PIN
+    - ACCESS_RESET_PIN
+    - ACCESS_RESET_EMAIL
+    - ACCESS_RESET_PHONE_NUMBER
+    - ACCESS_DELETE_ACCOUNT
+  backend-mobile-api_model_enum.BiometricStatus:
+    enum:
+    - ACTIVE
+    - IN_ACTIVE
+    type: string
+    x-enum-varnames:
+    - BIOMETRIC_ACTIVE
+    - BIOMETRIC_IN_ACTIVE
+  backend-mobile-api_model_enum.LoginType:
+    enum:
+    - EMAIL
+    - PHONE_NUMBER
+    - BIOMETRIC
+    type: string
+    x-enum-varnames:
+    - LOGIN_EMAIL
+    - LOGIN_PHONE_NUMBER
+    - LOGIN_BIOMETRIC
+  backend-mobile-api_model_enum.OtpService:
+    enum:
+    - OTP_VERIFY_ACCOUNT
+    - OTP_RESET_PIN
+    - OTP_FORGOT_PIN
+    - OTP_RESET_EMAIL
+    - OTP_RESET_PHONE_NUMBER
+    type: string
+    x-enum-varnames:
+    - OTP_VERIFY_ACCOUNT
+    - OTP_RESET_PIN
+    - OTP_FORGOT_PIN
+    - OTP_RESET_EMAIL
+    - OTP_RESET_PHONE_NUMBER
+  backend-mobile-api_model_enum.OtpType:
+    enum:
+    - EMAIL
+    - SMS
+    - WHATSAPP
+    type: string
+    x-enum-varnames:
+    - TYPE_EMAIL
+    - TYPE_SMS
+    - TYPE_WHATSAPP
+  backend-mobile-api_model_enum.UserDetailStatus:
+    enum:
+    - WAITING_VERIFICATION
+    - WAITING_KYC_PROCESS
+    type: string
+    x-enum-varnames:
+    - USER_WAITING_VERIFICATION
+    - USER_WAITING_KYC_PROCESS
+  backend-mobile-api_model_enum_pkgErr.Code:
+    enum:
+    - "00"
+    - "100"
+    - "110"
+    - "111"
+    - "112"
+    - "113"
+    - "114"
+    - "115"
+    - "116"
+    - "117"
+    - "118"
+    - "121"
+    - "122"
+    - "123"
+    - "124"
+    - "125"
+    - "126"
+    - "127"
+    - "128"
+    - "129"
+    - "133"
+    - "500"
+    - "130"
+    - "131"
+    - "132"
+    - "140"
+    - "141"
+    - "142"
+    - "143"
+    - "144"
+    - "145"
+    - "146"
+    - "147"
+    - "148"
+    - "149"
+    - "150"
+    - "161"
+    - "170"
+    - "171"
+    - "172"
+    type: string
+    x-enum-varnames:
+    - SUCCESS_CODE
+    - UNDEFINED_ERROR_CODE
+    - AUTH_INVALID_REQUEST_PAYLOAD_CODE
+    - AUTH_INVALID_EMAIL_FORMAT_CODE
+    - AUTH_INVALID_PIN_FORMAT_CODE
+    - AUTH_INVALID_PHONE_NUMBER_FORMAT_CODE
+    - AUTH_INVALID_DATE_FORMAT_CODE
+    - AUHT_EMAIL_ALREADY_REGISTERED_CODE
+    - AUTH_PHONE_NUMBER_ALREADY_REGISTERED_CODE
+    - AUTH_USER_NOT_FOUND_CODE
+    - AUTH_INVALID_OTP_CODE
+    - AUTH_UNAUTHORIZED_CODE
+    - AUTH_UNVERIFIED_CODE
+    - AUTH_BIOMETRC_INACTIVE_CODE
+    - AUTH_ALREADY_VERIFIED_CODE
+    - AUTH_RECORD_NOT_FOUND_CODE
+    - AUTH_EXPIRED_TIME_CODE
+    - AUTH_INVALID_ACCESS_CODE
+    - AUTH_INVALID_SIGNATURE_CODE
+    - AUTH_DEFERENCE_DEVICE_CODE
+    - INVALID_REQUEST_PAYLOAD_CODE
+    - INTERNAL_SERVER_ERROR_CODE
+    - OUTBOUND_RECORD_NOT_FOUND_CODE
+    - OUTBOUND_UNDIFINED_CODE
+    - OUTBOUND_INVALID_PAYLOAD
+    - PROFILE_INVALID_PAYLOAD_CODE
+    - PROFILE_USER_NOT_FOUND_CODE
+    - PROFILE_INVALID_ACCESS_CODE
+    - PROFILE_DEFERENCE_DEVICE_CODE
+    - PROFILE_INVAKID_PIN_CODE
+    - PROFILE_EMAIL_ALREADY_REGISTERED_CODE
+    - PROFILE_PHONE_NUMBER_ALREADY_REGISTERED_CODE
+    - PROFILE_INVALID_OTP_CODE
+    - PROFILE_IS_EXISTING_PIN
+    - PROFILE_EXPIRED_ACCESS_CODE
+    - PROFILE_RECORD_NOT_FOUND_CODE
+    - BIOMETRIC_INVALID_REQUEST_CODE
+    - ARTICLE_RECORD_NOT_FOUND_CODE
+    - ARTICLE_DEFERENCE_DEVICE_CODE
+    - ARTICLE_USER_NOT_FOUNDCODE
+info:
+  contact: {}
+  description: BEYOND-MOBILE-BACKEND
+  title: BEYOND-MOBILE-BACKEND
+  version: "1.0"
+paths:
+  /api/internal/v1/articles/delete:
+    post:
+      consumes:
+      - application/json
+      description: Remove New Articles
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Remove Articles Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.DeleteArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RecordNotFoundArticles'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Remove Articles
+      tags:
+      - Articles
+  /api/internal/v1/articles/insert:
+    post:
+      consumes:
+      - application/json
+      description: Add New Articles
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Insert Articles Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.NewArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: New Articles
+      tags:
+      - Articles
+  /api/internal/v1/articles/list:
+    post:
+      consumes:
+      - application/json
+      description: Inquiry List Articles
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Select List Articles Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.SelectListArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.SuccessListArticles'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RecordNotFoundArticles'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Lit Articles
+      tags:
+      - Articles
+  /api/internal/v1/articles/update:
+    patch:
+      consumes:
+      - application/json
+      description: Update Existing Articles
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Update Articles Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.UpdateArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RecordNotFoundArticles'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Update Articles
+      tags:
+      - Articles
+  /api/v1/articles/list:
+    post:
+      consumes:
+      - application/json
+      description: Inquiry List Articles
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: List Articles Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.SelectListArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.SuccessListArticles'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceArtice'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RecordNotFoundArticles'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Lit Articles
+      tags:
+      - Articles
+  /api/v1/internal/verihubs/verify-ktp:
+    post:
+      consumes:
+      - application/json
+      description: Endpoint for verify user KTP for KYC
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: KTP Verify Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.KycRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: KYC Verify KTP User
+      tags:
+      - KYC
+  /api/v1/internal/verihubs/verify-passport:
+    post:
+      consumes:
+      - application/json
+      description: Endpoint for verify user Passport for KYC
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: KTP Verify Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.KycRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: KYC Verify Passport User
+      tags:
+      - KYC
+  /api/v1/users/auth/forgot-pin:
+    post:
+      consumes:
+      - application/json
+      description: request access to renew pin on forgot moment
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Register Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.ForgotPinRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Forgot Pin
+      tags:
+      - Auth
+  /api/v1/users/auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Login using email or username
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Email Login Request
+        in: body
+        name: loginEmailRequest
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.LoginEmailRequest'
+      - description: Phone number Login Request
+        in: body
+        name: loginPhoneNumberRequest
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.LoginPhoneNumberRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.LoginSuccess'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDevice'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Login
+      tags:
+      - Auth
+  /api/v1/users/auth/logout:
+    post:
+      consumes:
+      - application/json
+      description: user log-out from apps
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Logout Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.LogoutRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+      summary: Log-out User
+      tags:
+      - Auth
+  /api/v1/users/auth/otp/send:
+    post:
+      consumes:
+      - application/json
+      description: OTP to cridential access
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Register Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.SendOtpRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.SendOtpSuccess'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UnverifiedUser'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Send Otp To get AccessTokenRequest
+      tags:
+      - Auth
+  /api/v1/users/auth/otp/verify:
+    post:
+      consumes:
+      - application/json
+      description: verify OTP to cridential access
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Register Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.VerifyOtpRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.SuccesVerifyOtpSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UnverifiedUser'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: verfy OTP To get AccessTokenRequest
+      tags:
+      - Auth
+  /api/v1/users/auth/refresh:
+    post:
+      consumes:
+      - application/json
+      description: user reconecting after acces expired
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Refresh Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.RefreshTokenRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.LoginSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RefreshTokenInvalidPayload'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDevice'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Refresh token access
+      tags:
+      - Auth
+  /api/v1/users/auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Register Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Register User
+      tags:
+      - Auth
+  /api/v1/users/auth/set-pin:
+    post:
+      consumes:
+      - application/json
+      description: Set Pin with Req
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Register Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.SetPinRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.SetPinMisMatch'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.InvalidAccessCode'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Set Pin new pin
+      tags:
+      - Auth
+  /api/v1/users/kyc/register-kyc-ktp:
+    post:
+      consumes:
+      - application/json
+      description: Add new user KTP for KYC
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: KTP Save Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.KTPrequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: KYC Save KTP User
+      tags:
+      - KYC
+  /api/v1/users/kyc/register-kyc-passport:
+    post:
+      consumes:
+      - application/json
+      description: Add new user Passport for KYC
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Passport Save Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.PassportRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: KYC Save Passport User
+      tags:
+      - KYC
+  /api/v1/users/profile/access-token:
+    post:
+      consumes:
+      - application/json
+      - application/json
+      description: access token to update profile data
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Access Token Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.AccessTokenRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfileAccessTokenResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfilePhoneNumberAlreadyRegistered'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfileUnauthorized'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: request access token
+      tags:
+      - Profile
+  /api/v1/users/profile/biometric:
+    post:
+      consumes:
+      - application/json
+      description: user change biometric active in_activeemail active
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: biometric status Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.BiometrictStatusRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: set biometric active in_active
+      tags:
+      - Profile
+  /api/v1/users/profile/delete-account:
+    post:
+      consumes:
+      - application/json
+      description: user remove own account active
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: delete account Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.DeletetAccountRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfileInvalidPayloadResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfileAccessInvalidFailureResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: delete account
+      tags:
+      - Profile
+  /api/v1/users/profile/inquiry:
+    get:
+      consumes:
+      - application/json
+      description: inquiry profile data
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.InquiryProfileResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.Unauthorized'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: inquiry user profile
+      tags:
+      - Profile
+  /api/v1/users/profile/otp/verify:
+    post:
+      consumes:
+      - application/json
+      description: verify otp to change update profile
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Verify Otp Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.VerifyOtpRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfileInvalidPayloadResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfileAccessInvalidFailureResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: verify otp
+      tags:
+      - Profile
+  /api/v1/users/profile/profile-image:
+    get:
+      consumes:
+      - application/json
+      description: user get url profie picture with login true
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: Get Profile picture url
+      tags:
+      - Profile
+    post:
+      consumes:
+      - application/json
+      description: user change profile picture
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: profile_picture
+        in: formData
+        name: profile_picture
+        required: true
+        type: file
+      - description: device_id
+        in: formData
+        name: device_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: set new profile picture
+      tags:
+      - Profile
+  /api/v1/users/profile/reset/email:
+    post:
+      consumes:
+      - application/json
+      description: user change email active
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Reset Email Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.ResetEmailRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfileEmailAlreadyRegistered'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.Unauthorized'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: set new email
+      tags:
+      - Profile
+  /api/v1/users/profile/reset/full-name:
+    post:
+      consumes:
+      - application/json
+      description: user change email active
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Register Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.ResetFullNameRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfileInvalidPayloadResponse'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: set new email
+      tags:
+      - Profile
+  /api/v1/users/profile/reset/phone-number:
+    post:
+      consumes:
+      - application/json
+      description: user change phone number active
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Reset Phone Number Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.ResetPhoneNumberRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ProfilePhoneNumberAlreadyRegistered'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.Unauthorized'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: set new phone number
+      tags:
+      - Profile
+  /api/v1/users/profile/reset/pin:
+    post:
+      consumes:
+      - application/json
+      description: user change pin when user is still login
+      parameters:
+      - description: X-NONCE
+        in: header
+        name: X-NONCE
+        required: true
+        type: string
+      - description: X-SIGNATURE
+        in: header
+        name: X-SIGNATURE
+        required: true
+        type: string
+      - description: X-DEVICE-ID
+        in: header
+        name: X-DEVICE-ID
+        required: true
+        type: string
+      - description: X-TIMESTAMP
+        in: header
+        name: X-TIMESTAMP
+        required: true
+        type: string
+      - description: X-LATITUDE
+        in: header
+        name: X-LATITUDE
+        required: true
+        type: string
+      - description: X-LONGITUDE
+        in: header
+        name: X-LONGITUDE
+        required: true
+        type: string
+      - description: Authorization
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Reset-Pin Request
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/backend-mobile-api_model_dto_request.ResetPinRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ExistingPinFailureResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.Unauthorized'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.ExpiredAccessFailureResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto_swagger.CommonError'
+      summary: set new pin
+      tags:
+      - Profile
+  /healthcheck/liveness:
+    get:
+      consumes:
+      - application/json
+      description: Returns server active status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto.BaseResponse'
+      summary: Check server liveness
+      tags:
+      - Health
+  /healthcheck/readiness:
+    get:
+      consumes:
+      - application/json
+      description: Returns database, Redis, and Minio connection status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/backend-mobile-api_model_dto.BaseResponse'
+      summary: Check server readiness
+      tags:
+      - Health
+swagger: "2.0"

@@ -1,0 +1,18 @@
+# Ignore env files
+.env
+firebase-key.json
+.env.*
+
+# Ignore Go module files
+go.mod
+go.sum
+
+# other
+modules.xml
+vcs.xml
+/.idea/mobile-api.iml
+
+#Dependencies
+/vendor/
+vendor/
+/Godeps/

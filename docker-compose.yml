@@ -1,0 +1,51 @@
+services:
+  postgres-container:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  redis-server:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - backend
+
+  app:
+    image: backend-mobile-api-app
+    build: ../mirror/backend-mobile-api
+    environment:
+      - APP_ENV=${APP_ENV}
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=9090
+      - POSTGRES_HOST=postgres-container
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DATABASE=${POSTGRES_DATABASE}
+      - REDIS_ADDRESS=redis-server:6379
+    ports:
+      - "9090:9090"
+    depends_on:
+      - postgres-container
+      - redis-server
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true
+
+volumes:
+  postgres_data:
+  redis_data:

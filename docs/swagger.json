@@ -1,0 +1,4352 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "BEYOND-MOBILE-BACKEND",
+        "title": "BEYOND-MOBILE-BACKEND",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {
+        "/api/internal/v1/articles/delete": {
+            "post": {
+                "description": "Remove New Articles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Remove Articles",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Remove Articles Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.DeleteArticleRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RecordNotFoundArticles"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/internal/v1/articles/insert": {
+            "post": {
+                "description": "Add New Articles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "New Articles",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Insert Articles Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.NewArticleRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/internal/v1/articles/list": {
+            "post": {
+                "description": "Inquiry List Articles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Lit Articles",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Select List Articles Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.SelectListArticleRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.SuccessListArticles"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RecordNotFoundArticles"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/internal/v1/articles/update": {
+            "patch": {
+                "description": "Update Existing Articles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Update Articles",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Articles Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.UpdateArticleRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RecordNotFoundArticles"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/articles/list": {
+            "post": {
+                "description": "Inquiry List Articles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Articles"
+                ],
+                "summary": "Lit Articles",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "List Articles Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.SelectListArticleRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.SuccessListArticles"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceArtice"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RecordNotFoundArticles"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/internal/verihubs/verify-ktp": {
+            "post": {
+                "description": "Endpoint for verify user KTP for KYC",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KYC"
+                ],
+                "summary": "KYC Verify KTP User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "KTP Verify Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.KycRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/internal/verihubs/verify-passport": {
+            "post": {
+                "description": "Endpoint for verify user Passport for KYC",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KYC"
+                ],
+                "summary": "KYC Verify Passport User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "KTP Verify Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.KycRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/auth/forgot-pin": {
+            "post": {
+                "description": "request access to renew pin on forgot moment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Forgot Pin",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Register Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.ForgotPinRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/auth/login": {
+            "post": {
+                "description": "Login using email or username",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Email Login Request",
+                        "name": "loginEmailRequest",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.LoginEmailRequest"
+                        }
+                    },
+                    {
+                        "description": "Phone number Login Request",
+                        "name": "loginPhoneNumberRequest",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.LoginPhoneNumberRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.LoginSuccess"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDevice"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/auth/logout": {
+            "post": {
+                "description": "user log-out from apps",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Log-out User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Logout Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.LogoutRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/auth/otp/send": {
+            "post": {
+                "description": "OTP to cridential access",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Send Otp To get AccessTokenRequest",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Register Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.SendOtpRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.SendOtpSuccess"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UnverifiedUser"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/auth/otp/verify": {
+            "post": {
+                "description": "verify OTP to cridential access",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "verfy OTP To get AccessTokenRequest",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Register Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.VerifyOtpRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.SuccesVerifyOtpSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UnverifiedUser"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/auth/refresh": {
+            "post": {
+                "description": "user reconecting after acces expired",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Refresh token access",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Refresh Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.RefreshTokenRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.LoginSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RefreshTokenInvalidPayload"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDevice"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/auth/register": {
+            "post": {
+                "description": "Register a new user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Register Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.RegisterRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/auth/set-pin": {
+            "post": {
+                "description": "Set Pin with Req",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Set Pin new pin",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Register Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.SetPinRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.SetPinMisMatch"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.InvalidAccessCode"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/kyc/register-kyc-ktp": {
+            "post": {
+                "description": "Add new user KTP for KYC",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KYC"
+                ],
+                "summary": "KYC Save KTP User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "KTP Save Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.KTPrequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/kyc/register-kyc-passport": {
+            "post": {
+                "description": "Add new user Passport for KYC",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "KYC"
+                ],
+                "summary": "KYC Save Passport User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Passport Save Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.PassportRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFound"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/access-token": {
+            "post": {
+                "description": "access token to update profile data",
+                "consumes": [
+                    "application/json",
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "request access token",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Access Token Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.AccessTokenRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfileAccessTokenResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfilePhoneNumberAlreadyRegistered"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfileUnauthorized"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/biometric": {
+            "post": {
+                "description": "user change biometric active in_activeemail active",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "set biometric active in_active",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "biometric status Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.BiometrictStatusRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/delete-account": {
+            "post": {
+                "description": "user remove own account active",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "delete account",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "delete account Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.DeletetAccountRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfileInvalidPayloadResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfileAccessInvalidFailureResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/inquiry": {
+            "get": {
+                "description": "inquiry profile data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "inquiry user profile",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.InquiryProfileResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.Unauthorized"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/otp/verify": {
+            "post": {
+                "description": "verify otp to change update profile",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "verify otp",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Verify Otp Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.VerifyOtpRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfileInvalidPayloadResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfileAccessInvalidFailureResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/profile-image": {
+            "get": {
+                "description": "user get url profie picture with login true",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "Get Profile picture url",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "user change profile picture",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "set new profile picture",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "profile_picture",
+                        "name": "profile_picture",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "device_id",
+                        "name": "device_id",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/reset/email": {
+            "post": {
+                "description": "user change email active",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "set new email",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Reset Email Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.ResetEmailRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfileEmailAlreadyRegistered"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.Unauthorized"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/reset/full-name": {
+            "post": {
+                "description": "user change email active",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "set new email",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Register Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.ResetFullNameRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfileInvalidPayloadResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/reset/phone-number": {
+            "post": {
+                "description": "user change phone number active",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "set new phone number",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Reset Phone Number Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.ResetPhoneNumberRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ProfilePhoneNumberAlreadyRegistered"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.Unauthorized"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/profile/reset/pin": {
+            "post": {
+                "description": "user change pin when user is still login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profile"
+                ],
+                "summary": "set new pin",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "X-NONCE",
+                        "name": "X-NONCE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-SIGNATURE",
+                        "name": "X-SIGNATURE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-DEVICE-ID",
+                        "name": "X-DEVICE-ID",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-TIMESTAMP",
+                        "name": "X-TIMESTAMP",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LATITUDE",
+                        "name": "X-LATITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "X-LONGITUDE",
+                        "name": "X-LONGITUDE",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Reset-Pin Request",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_request.ResetPinRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.BasicSuccess"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ExistingPinFailureResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.Unauthorized"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.ExpiredAccessFailureResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.CommonError"
+                        }
+                    }
+                }
+            }
+        },
+        "/healthcheck/liveness": {
+            "get": {
+                "description": "Returns server active status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Health"
+                ],
+                "summary": "Check server liveness",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/healthcheck/readiness": {
+            "get": {
+                "description": "Returns database, Redis, and Minio connection status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Health"
+                ],
+                "summary": "Check server readiness",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto.BaseResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "backend-mobile-api_internal_middleware.TokenData": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                },
+                "expired_access": {
+                    "type": "string"
+                },
+                "expired_refresh": {
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto.BaseResponse": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "status_code": {
+                    "$ref": "#/definitions/backend-mobile-api_model_enum_pkgErr.Code"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.AccessTokenRequest": {
+            "type": "object",
+            "required": [
+                "access_type",
+                "device_id",
+                "pin"
+            ],
+            "properties": {
+                "access_type": {
+                    "enum": [
+                        "SET_PIN",
+                        "RESET_PIN",
+                        "RESET_EMAIL",
+                        "RESET_PHONE_NUMBER",
+                        "DELETE_ACCOUNT"
+                    ],
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backend-mobile-api_model_enum.AccessTokenType"
+                        }
+                    ]
+                },
+                "device_id": {
+                    "type": "string"
+                },
+                "pin": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.Article": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "active_after_day": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.ArticleByList": {
+            "type": "object",
+            "properties": {
+                "active_after_day": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.BiometrictStatusRequest": {
+            "type": "object",
+            "required": [
+                "device_id"
+            ],
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "device_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.DeleteArticleRequest": {
+            "type": "object",
+            "required": [
+                "article",
+                "device_id"
+            ],
+            "properties": {
+                "article": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_request.Article"
+                },
+                "device_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.DeletetAccountRequest": {
+            "type": "object",
+            "required": [
+                "account_token",
+                "device_id"
+            ],
+            "properties": {
+                "account_token": {
+                    "type": "string"
+                },
+                "device_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.DetailCurrentAddress": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "district": {
+                    "type": "string"
+                },
+                "full_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.DeviceData": {
+            "type": "object",
+            "required": [
+                "app_version_code",
+                "app_version_name",
+                "brand",
+                "manufacturer",
+                "model",
+                "product",
+                "version_release",
+                "version_sdk"
+            ],
+            "properties": {
+                "app_version_code": {
+                    "type": "string"
+                },
+                "app_version_name": {
+                    "type": "string"
+                },
+                "brand": {
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "product": {
+                    "type": "string"
+                },
+                "version_release": {
+                    "type": "string"
+                },
+                "version_sdk": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.ForgotPinRequest": {
+            "type": "object",
+            "required": [
+                "callback_url",
+                "device_id",
+                "device_info",
+                "email"
+            ],
+            "properties": {
+                "callback_url": {
+                    "type": "string"
+                },
+                "device_id": {
+                    "type": "string"
+                },
+                "device_info": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_request.DeviceData"
+                },
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.KTPrequest": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "current_address": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_request.DetailCurrentAddress"
+                },
+                "date_of_birth": {
+                    "type": "string"
+                },
+                "district": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "martial_status": {
+                    "type": "string"
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "nik": {
+                    "type": "string"
+                },
+                "occupation": {
+                    "type": "string"
+                },
+                "place_of_birth": {
+                    "type": "string"
+                },
+                "religion": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.KycRequest": {
+            "type": "object",
+            "properties": {
+                "image": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.LoginEmailRequest": {
+            "type": "object",
+            "required": [
+                "device_id",
+                "email",
+                "latitude",
+                "longitude",
+                "pin",
+                "place",
+                "type"
+            ],
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "string"
+                },
+                "longitude": {
+                    "type": "string"
+                },
+                "pin": {
+                    "type": "string"
+                },
+                "place": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "EMAIL",
+                        "PHONE_NUMBER",
+                        "BIOMETRIC"
+                    ],
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backend-mobile-api_model_enum.LoginType"
+                        }
+                    ],
+                    "example": "EMAIL"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.LoginPhoneNumberRequest": {
+            "type": "object",
+            "required": [
+                "device_id",
+                "latitude",
+                "longitude",
+                "phone_number",
+                "pin",
+                "place",
+                "type"
+            ],
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "string"
+                },
+                "longitude": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "pin": {
+                    "type": "string"
+                },
+                "place": {
+                    "type": "string"
+                },
+                "type": {
+                    "enum": [
+                        "EMAIL",
+                        "PHONE_NUMBER"
+                    ],
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backend-mobile-api_model_enum.LoginType"
+                        }
+                    ],
+                    "example": "PHONE_NUMBER"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.LogoutRequest": {
+            "type": "object",
+            "required": [
+                "device_id",
+                "refresh_token"
+            ],
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.NewArticle": {
+            "type": "object",
+            "required": [
+                "name",
+                "url"
+            ],
+            "properties": {
+                "active_after_day": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.NewArticleRequest": {
+            "type": "object",
+            "required": [
+                "device_id",
+                "new_article"
+            ],
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                },
+                "new_article": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_request.NewArticle"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.PassportRequest": {
+            "type": "object",
+            "properties": {
+                "current_address": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_request.DetailCurrentAddress"
+                },
+                "date_of_birth": {
+                    "type": "string"
+                },
+                "date_of_expired": {
+                    "type": "string"
+                },
+                "date_of_issue": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "image": {
+                    "type": "string"
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "passport_no": {
+                    "type": "string"
+                },
+                "passport_type": {
+                    "type": "string"
+                },
+                "place_of_birth": {
+                    "type": "string"
+                },
+                "place_of_issue": {
+                    "type": "string"
+                },
+                "resi_number": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.RefreshTokenRequest": {
+            "type": "object",
+            "required": [
+                "device_id",
+                "refresh_token",
+                "uuid"
+            ],
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.RegisterRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "full_name",
+                "phone_number"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.ResetEmailRequest": {
+            "type": "object",
+            "required": [
+                "account_token",
+                "device_id",
+                "email"
+            ],
+            "properties": {
+                "account_token": {
+                    "type": "string"
+                },
+                "device_id": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.ResetFullNameRequest": {
+            "type": "object",
+            "required": [
+                "device_id",
+                "full_name"
+            ],
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                },
+                "full_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.ResetPhoneNumberRequest": {
+            "type": "object",
+            "required": [
+                "account_token",
+                "device_id",
+                "phone_number"
+            ],
+            "properties": {
+                "account_token": {
+                    "type": "string"
+                },
+                "device_id": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.ResetPinRequest": {
+            "type": "object",
+            "required": [
+                "account_token",
+                "confirmed_pin",
+                "device_id",
+                "pin"
+            ],
+            "properties": {
+                "account_token": {
+                    "type": "string"
+                },
+                "confirmed_pin": {
+                    "type": "string"
+                },
+                "device_id": {
+                    "type": "string"
+                },
+                "pin": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.SelectListArticleRequest": {
+            "type": "object",
+            "required": [
+                "article",
+                "device_id"
+            ],
+            "properties": {
+                "article": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_request.ArticleByList"
+                },
+                "device_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.SendOtpRequest": {
+            "type": "object",
+            "required": [
+                "device_id",
+                "otp_method",
+                "service_type",
+                "verify_to"
+            ],
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                },
+                "otp_method": {
+                    "enum": [
+                        "EMAIL",
+                        "SMS",
+                        "WHATSAPP"
+                    ],
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backend-mobile-api_model_enum.OtpType"
+                        }
+                    ]
+                },
+                "service_type": {
+                    "enum": [
+                        "OTP_VERIFY_ACCOUNT",
+                        "OTP_RESET_PIN",
+                        "OTP_FORGOT_PIN"
+                    ],
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/backend-mobile-api_model_enum.OtpService"
+                        }
+                    ]
+                },
+                "verify_to": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.SetPinRequest": {
+            "type": "object",
+            "required": [
+                "account_token",
+                "confirmed_pin",
+                "device_id",
+                "email_or_phone_number",
+                "pin"
+            ],
+            "properties": {
+                "account_token": {
+                    "type": "string"
+                },
+                "confirmed_pin": {
+                    "type": "string"
+                },
+                "device_id": {
+                    "type": "string"
+                },
+                "email_or_phone_number": {
+                    "type": "string"
+                },
+                "pin": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.UpdateArticleRequest": {
+            "type": "object",
+            "required": [
+                "article",
+                "device_id"
+            ],
+            "properties": {
+                "article": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_request.Article"
+                },
+                "device_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_request.VerifyOtpRequest": {
+            "type": "object",
+            "required": [
+                "device_id",
+                "device_info",
+                "otp",
+                "verify_id"
+            ],
+            "properties": {
+                "device_id": {
+                    "type": "string"
+                },
+                "device_info": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_request.DeviceData"
+                },
+                "otp": {
+                    "type": "string"
+                },
+                "verify_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_response.AccessTokenResponse": {
+            "type": "object",
+            "properties": {
+                "access_key": {
+                    "type": "string"
+                },
+                "expire_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_response.ArticleResponse": {
+            "type": "object",
+            "properties": {
+                "active_after_day": {
+                    "type": "string"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_response.SelectArticleResponse": {
+            "type": "object",
+            "properties": {
+                "articles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/backend-mobile-api_model_dto_response.ArticleResponse"
+                    }
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_response.SendOtpResponse": {
+            "type": "object",
+            "properties": {
+                "expire_at": {
+                    "type": "string"
+                },
+                "verify_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_response.UserProfileInquiryResponse": {
+            "type": "object",
+            "properties": {
+                "biometric_status": {
+                    "$ref": "#/definitions/backend-mobile-api_model_enum.BiometricStatus"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "fullname": {
+                    "type": "string"
+                },
+                "phone_number": {
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/definitions/backend-mobile-api_model_enum.UserDetailStatus"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_response.VerifyOtp": {
+            "type": "object",
+            "properties": {
+                "access_key": {
+                    "type": "string"
+                },
+                "expire_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.BasicSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "00"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.CommonError": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": "time out"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "server is busy"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "119"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.DeferenceDevice": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "deference device"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "129"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.DeferenceDeviceArtice": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "deference device"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "171"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.DeferenceDeviceProfileRequest": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "deference device"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "143"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.ExistingPinFailureResponse": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": " is existing pin, no update"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "148"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.ExpiredAccessFailureResponse": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "expired"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "149"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.InquiryProfileResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_response.UserProfileInquiryResponse"
+                },
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "00"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.InvalidAccessCode": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "invalid access key"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "127"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.LoginSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "token": {
+                            "$ref": "#/definitions/backend-mobile-api_internal_middleware.TokenData"
+                        },
+                        "user": {
+                            "$ref": "#/definitions/backend-mobile-api_model_dto_swagger.UserData"
+                        }
+                    }
+                },
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "00"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.ProfileAccessInvalidFailureResponse": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "invalid access key"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "142"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.ProfileAccessTokenResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_response.AccessTokenResponse"
+                },
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "00"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.ProfileEmailAlreadyRegistered": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "email already registered"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "145"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.ProfileInvalidPayloadResponse": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "invalid request payload"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "140"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.ProfilePhoneNumberAlreadyRegistered": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "phone number already registered"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "146"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.ProfileUnauthorized": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "invalid pin"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "121"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.RecordNotFoundArticles": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "record not found"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "160"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.RefreshTokenInvalidPayload": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": "refresh_token is required"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "invalid request payload"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "110"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.RegisterEmailAlreadyUsed": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": "deference confirmed pin"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "invalid request payload"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "110"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.SendOtpSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_response.SendOtpResponse"
+                },
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "00"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.SetPinMisMatch": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": "deference confirmed pin"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "invalid request payload"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "110"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.SuccesVerifyOtpSuccess": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_response.VerifyOtp"
+                },
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "00"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.SuccessListArticles": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/backend-mobile-api_model_dto_response.SelectArticleResponse"
+                },
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "00"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.Unauthorized": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "unauthorized"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "121"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.UnverifiedUser": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "unverified"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "122"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.UserData": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.UserNotFound": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "user not found"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "117"
+                }
+            }
+        },
+        "backend-mobile-api_model_dto_swagger.UserNotFoundProfileFailureResponse": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "error": {
+                    "type": "string",
+                    "example": ""
+                },
+                "message": {
+                    "type": "string",
+                    "example": "user not found"
+                },
+                "status_code": {
+                    "type": "string",
+                    "example": "141"
+                }
+            }
+        },
+        "backend-mobile-api_model_enum.AccessTokenType": {
+            "type": "string",
+            "enum": [
+                "SET_PIN",
+                "FORGOT_PIN",
+                "RESET_PIN",
+                "RESET_EMAIL",
+                "RESET_PHONE_NUMBER",
+                "DELETE_ACCOUNT"
+            ],
+            "x-enum-varnames": [
+                "ACCESS_SET_PIN",
+                "ACCESS_FORGOT_PIN",
+                "ACCESS_RESET_PIN",
+                "ACCESS_RESET_EMAIL",
+                "ACCESS_RESET_PHONE_NUMBER",
+                "ACCESS_DELETE_ACCOUNT"
+            ]
+        },
+        "backend-mobile-api_model_enum.BiometricStatus": {
+            "type": "string",
+            "enum": [
+                "ACTIVE",
+                "IN_ACTIVE"
+            ],
+            "x-enum-varnames": [
+                "BIOMETRIC_ACTIVE",
+                "BIOMETRIC_IN_ACTIVE"
+            ]
+        },
+        "backend-mobile-api_model_enum.LoginType": {
+            "type": "string",
+            "enum": [
+                "EMAIL",
+                "PHONE_NUMBER",
+                "BIOMETRIC"
+            ],
+            "x-enum-varnames": [
+                "LOGIN_EMAIL",
+                "LOGIN_PHONE_NUMBER",
+                "LOGIN_BIOMETRIC"
+            ]
+        },
+        "backend-mobile-api_model_enum.OtpService": {
+            "type": "string",
+            "enum": [
+                "OTP_VERIFY_ACCOUNT",
+                "OTP_RESET_PIN",
+                "OTP_FORGOT_PIN",
+                "OTP_RESET_EMAIL",
+                "OTP_RESET_PHONE_NUMBER"
+            ],
+            "x-enum-varnames": [
+                "OTP_VERIFY_ACCOUNT",
+                "OTP_RESET_PIN",
+                "OTP_FORGOT_PIN",
+                "OTP_RESET_EMAIL",
+                "OTP_RESET_PHONE_NUMBER"
+            ]
+        },
+        "backend-mobile-api_model_enum.OtpType": {
+            "type": "string",
+            "enum": [
+                "EMAIL",
+                "SMS",
+                "WHATSAPP"
+            ],
+            "x-enum-varnames": [
+                "TYPE_EMAIL",
+                "TYPE_SMS",
+                "TYPE_WHATSAPP"
+            ]
+        },
+        "backend-mobile-api_model_enum.UserDetailStatus": {
+            "type": "string",
+            "enum": [
+                "WAITING_VERIFICATION",
+                "WAITING_KYC_PROCESS"
+            ],
+            "x-enum-varnames": [
+                "USER_WAITING_VERIFICATION",
+                "USER_WAITING_KYC_PROCESS"
+            ]
+        },
+        "backend-mobile-api_model_enum_pkgErr.Code": {
+            "type": "string",
+            "enum": [
+                "00",
+                "100",
+                "110",
+                "111",
+                "112",
+                "113",
+                "114",
+                "115",
+                "116",
+                "117",
+                "118",
+                "121",
+                "122",
+                "123",
+                "124",
+                "125",
+                "126",
+                "127",
+                "128",
+                "129",
+                "133",
+                "500",
+                "130",
+                "131",
+                "132",
+                "140",
+                "141",
+                "142",
+                "143",
+                "144",
+                "145",
+                "146",
+                "147",
+                "148",
+                "149",
+                "150",
+                "161",
+                "170",
+                "171",
+                "172"
+            ],
+            "x-enum-varnames": [
+                "SUCCESS_CODE",
+                "UNDEFINED_ERROR_CODE",
+                "AUTH_INVALID_REQUEST_PAYLOAD_CODE",
+                "AUTH_INVALID_EMAIL_FORMAT_CODE",
+                "AUTH_INVALID_PIN_FORMAT_CODE",
+                "AUTH_INVALID_PHONE_NUMBER_FORMAT_CODE",
+                "AUTH_INVALID_DATE_FORMAT_CODE",
+                "AUHT_EMAIL_ALREADY_REGISTERED_CODE",
+                "AUTH_PHONE_NUMBER_ALREADY_REGISTERED_CODE",
+                "AUTH_USER_NOT_FOUND_CODE",
+                "AUTH_INVALID_OTP_CODE",
+                "AUTH_UNAUTHORIZED_CODE",
+                "AUTH_UNVERIFIED_CODE",
+                "AUTH_BIOMETRC_INACTIVE_CODE",
+                "AUTH_ALREADY_VERIFIED_CODE",
+                "AUTH_RECORD_NOT_FOUND_CODE",
+                "AUTH_EXPIRED_TIME_CODE",
+                "AUTH_INVALID_ACCESS_CODE",
+                "AUTH_INVALID_SIGNATURE_CODE",
+                "AUTH_DEFERENCE_DEVICE_CODE",
+                "INVALID_REQUEST_PAYLOAD_CODE",
+                "INTERNAL_SERVER_ERROR_CODE",
+                "OUTBOUND_RECORD_NOT_FOUND_CODE",
+                "OUTBOUND_UNDIFINED_CODE",
+                "OUTBOUND_INVALID_PAYLOAD",
+                "PROFILE_INVALID_PAYLOAD_CODE",
+                "PROFILE_USER_NOT_FOUND_CODE",
+                "PROFILE_INVALID_ACCESS_CODE",
+                "PROFILE_DEFERENCE_DEVICE_CODE",
+                "PROFILE_INVAKID_PIN_CODE",
+                "PROFILE_EMAIL_ALREADY_REGISTERED_CODE",
+                "PROFILE_PHONE_NUMBER_ALREADY_REGISTERED_CODE",
+                "PROFILE_INVALID_OTP_CODE",
+                "PROFILE_IS_EXISTING_PIN",
+                "PROFILE_EXPIRED_ACCESS_CODE",
+                "PROFILE_RECORD_NOT_FOUND_CODE",
+                "BIOMETRIC_INVALID_REQUEST_CODE",
+                "ARTICLE_RECORD_NOT_FOUND_CODE",
+                "ARTICLE_DEFERENCE_DEVICE_CODE",
+                "ARTICLE_USER_NOT_FOUNDCODE"
+            ]
+        }
+    }
+}
